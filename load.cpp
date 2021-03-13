@@ -28,8 +28,6 @@ int main(int argc,char **argv){
         create_file("intermediate.cpp",fname);
     else if(mode == "b")
         create_file("basic.cpp",fname);
-    else if(mode=="p")
-        create_file("pro.cpp",fname);
     else if(mode=="m")
         create_file("minimalist.cpp",fname);
     else {
