@@ -2,16 +2,27 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
 string dir = "/home/rishav/Templates/";
+const std::string currentDateTime() {
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+
+    return buf;
+}
+
 
 void create_file(string src,string dst){
     src = dir + src;
     ifstream source(src,ios::binary);
     ofstream dest(dst,ios::binary);
-    dest << "/***********************************************\n    AUTHOR :- Rishav Kumar\n    Created at: - " << __TIME__ << " " << __DATE__ << "\n***********************************************/" << endl;
+    dest << "/***********************************************\n    AUTHOR :- Rishav Kumar\n    Created at: - " << currentDateTime() << "\n***********************************************/" << endl;
     dest << source.rdbuf();
 }
 int main(int argc,char **argv){
